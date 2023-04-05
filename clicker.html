@@ -34,14 +34,13 @@
             <h1 class="text-center">Idle Clicker Game (Tahu Bulat)</h1>
 
             <div class="row">
-                <!--to be updated-->
                 <div class="col mt-1 mb-3" id="money">Money : </div> 
-                <div class="col mt-1 mb-3" id="clickers">Auto-clickers: 0</div>
+                <div class="col mt-1 mb-3" id="clickers"></div>
                 <div class="col mt-1 mb-3" id="branches"></div>
             </div>
             <div class="row">
                 <div class="col mb-3"></div>
-                <div class="col mb-3" id="clickerCost">Cost: 10</div>
+                <div class="col mb-3" id="clickerCost"></div>
                 <div class="col mb-3" id="multiplierCost"></div>
             </div>
             <div class="row">
@@ -50,7 +49,7 @@
                     <button type="button" class="btn btn-success" id="clickerButton">Buy Auto-Clicker</button>
                 </div>
                 <div class="col mt-1">
-                    <button type="button" class="btn btn-success" id="mutliplierButton">Buy Multiplier</button>
+                    <button type="button" class="btn btn-success" id="multiplierButton">Buy Multiplier</button>
                 </div>
             </div>
 
@@ -88,6 +87,7 @@
                 var clickers = 0;
                 var multiplierCost = 50000;
                 var moneyValue = 1000;
+                var clickerCost = 10000;
 
                 function update() {
                     console.log("branches = " + branches);
@@ -107,6 +107,21 @@
                         });
 
                         $('.menu1').append(button1, p1);
+
+                        $('#jualTahu').click(function() {
+                            var currentPrice1 = parseInt($('#tahuPrice').text());
+                            if (money >= currentPrice1) {
+                                money -= currentPrice1;
+                                var newPrice1 = currentPrice1 + 5000;
+                                $('#tahuPrice').text(newPrice1);
+                                moneyValue += 500;
+                                updateMoney();
+                                alert("Upgrade tahu isi berhasil!");
+                            } else {
+                                alert("Uangmu tidak cukup untuk mengupgrade tahu isi!");
+                            }
+                        });
+
                     } else if(branches === 2){
                         var button2 = $('<button/>', {
                             id: 'jualRisol',
@@ -119,6 +134,21 @@
                         });
 
                         $('.menu2').append(button2, p2);
+
+                        $('#jualRisol').click(function() {
+                            var currentPrice2 = parseInt($('#risolPrice').text());
+                            if (money >= currentPrice2) {
+                                money -= currentPrice2;
+                                var newPrice2 = currentPrice2 + 5000;
+                                $('#risolPrice').text(newPrice2);
+                                moneyValue += 700;
+                                updateMoney();
+                                alert("Upgrade risol berhasil!");
+                            } else {
+                                alert("Uangmu tidak cukup untuk mengupgrade risol!");
+                            }
+                        });
+
                     } else if(branches === 3){
                         var button3 = $('<button/>', {
                             id: 'jualCakwe',
@@ -131,52 +161,27 @@
                         });
 
                         $('.menu3').append(button3, p3);
-                    }
 
-                    $('#jualTahu').click(function() {
-                        var currentPrice1 = parseInt($('#tahuPrice').text());
-                        if (money >= currentPrice1) {
-                            money -= currentPrice1;
-                            var newPrice1 = currentPrice1 + 5000;
-                            $('#tahuPrice').text(newPrice1);
-                            updateMoney();
-                            alert("Upgrade tahu isi berhasil!");
-                        } else {
-                            alert("Uangmu tidak cukup untuk mengupgrade tahu isi!");
-                        }
-                    });
-
-                    $('#jualRisol').click(function() {
-                        var currentPrice2 = parseInt($('#risolPrice').text());
-                        if (money >= currentPrice2) {
-                            money -= currentPrice2;
-                            var newPrice2 = currentPrice2 + 5000;
-                            $('#risolPrice').text(newPrice2);
-                            updateMoney();
-                            alert("Upgrade risol berhasil!");
-                        } else {
-                            alert("Uangmu tidak cukup untuk mengupgrade risol!");
-                        }
-                    });
-
-                    $('#jualCakwe').click(function() {
-                        var currentPrice3 = parseInt($('#cakwePrice').text());
-                        if (money >= currentPrice3) {
-                            money -= currentPrice3;
-                            var newPrice3 = currentPrice3 + 5000;
-                            $('#cakwePrice').text(newPrice3);
-                            updateMoney();
-                            alert("Upgrade cakwe berhasil!");
-                        } else {
-                            alert("Uangmu tidak cukup untuk mengupgrade cakwe!");
-                        }
-                    });
+                        $('#jualCakwe').click(function() {
+                            var currentPrice3 = parseInt($('#cakwePrice').text());
+                            if (money >= currentPrice3) {
+                                money -= currentPrice3;
+                                var newPrice3 = currentPrice3 + 5000;
+                                $('#cakwePrice').text(newPrice3);
+                                moneyValue += 850;
+                                updateMoney();
+                                alert("Upgrade cakwe berhasil!");
+                            } else {
+                                alert("Uangmu tidak cukup untuk mengupgrade cakwe!");
+                            }
+                        });
+                    }                    
                 }
 
                 $('#multiplierButton').click(function(){
                     if(money >= multiplierCost) {
                         money -= multiplierCost;
-                        var newMultiplierCost = multiplierCost += 50000;   
+                        // var newMultiplierCost = multiplierCost += 50000;   
                         branches++;
                         multiplierCost += 50000;
                         update();
@@ -186,22 +191,24 @@
                     }
                 });
 
+                document.getElementById('money').textContent = "Money: " + money;
+
                 function updateMoney() {
                     console.log("money = " + money);
                     console.log("money value = " + moneyValue);
                     document.getElementById('money').textContent = "Money: " + money;
 
-                    $('#jualTahu').click(function(){
-                        moneyValue += 50;
-                    });
+                    // $('#jualTahu').click(function(){
+                    //     moneyValue += 50;
+                    // });
 
-                    $('#jualRisol').click(function(){
-                        moneyValue += 70;
-                    });
+                    // $('#jualRisol').click(function(){
+                    //     moneyValue += 70;
+                    // });
 
-                    $('#jualCakwe').click(function(){
-                        moneyValue += 80;
-                    });
+                    // $('#jualCakwe').click(function(){
+                    //     moneyValue += 80;
+                    // });
                 }
 
                 $('#tahuBulat').click(function(){
@@ -209,8 +216,37 @@
                     updateMoney();
                 });
 
-                update();
+                document.getElementById('clickers').textContent = "Auto-clickers: " + clickers;
+                document.getElementById('clickerCost').textContent = "Cost: " + clickerCost;
 
+                $('#clickerButton').click(function(){
+                    if(money >=clickerCost){
+                        money -= clickerCost;
+                        clickers++;
+                        clickerCost += 10000;
+                        updateClickers();
+                        updateMoney();
+                    }
+                    else{
+                        alert("Uangmu tidak cukup untuk membeli auto-clicker!");
+                    }
+                })
+
+                function updateClickers(){
+                    document.getElementById('clickers').textContent = "Auto-clickers: " + clickers;
+                    document.getElementById('clickerCost').textContent = "Cost: " + clickerCost;
+                    if (clickers > 0){
+                        $('#tahuBulat').click(function(){
+                            var clickValue;
+                            clickValue = 500*clickers;
+                            money += clickValue;
+                            updateMoney();
+                        })
+                    };
+                }
+
+                update();
+            
             });
         </script>
     </body>

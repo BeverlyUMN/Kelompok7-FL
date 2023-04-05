@@ -1,5 +1,10 @@
-#upgrades .menu1 .menu2 .menu3{
-    display: flex;
+.menu1, .menu2, .menu3{
+  display: flex;
+  flex-direction: row; 
+}
+
+.menu1 button, .menu2 button, .menu3 button{
+  margin-right: 10px;
 }
 
 #tahuPrice{
