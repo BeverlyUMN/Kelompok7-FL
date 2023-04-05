@@ -1,4 +1,4 @@
-#upgrades .menu{
+#upgrades .menu1 .menu2 .menu3{
     display: flex;
 }
 
@@ -14,4 +14,8 @@
 
 #upgrades button{
     margin-bottom: 10px;
+}
+
+#tahuBulat {
+	cursor: pointer;
 }

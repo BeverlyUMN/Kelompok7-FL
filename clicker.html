@@ -14,7 +14,7 @@
                 <div class="container-fluid">
                     <div class="navbar-header">
                         <a class="navbar-brand mb-0 h5" href="#">
-                            <img src="tahu bulat.GIF" class="d-inline-block align-top" width="35" height="47">
+                            <img src="images/tahu bulat.GIF" class="d-inline-block align-top" width="35" height="47">
                             Tahu Bulat Clicker
                         </a>
                     </div>
@@ -37,12 +37,12 @@
                 <!--to be updated-->
                 <div class="col mt-1 mb-3" id="money">Money: 0</div> 
                 <div class="col mt-1 mb-3" id="clickers">Auto-clickers: 0</div>
-                <div class="col mt-1 mb-3" id="branches">Buka Cabang Tahu Bulat: 1</div>
+                <div class="col mt-1 mb-3" id="branches"></div>
             </div>
             <div class="row">
                 <div class="col mb-3"></div>
                 <div class="col mb-3" id="clickerCost">Cost: 10</div>
-                <div class="col mb-3" id="multiplierCost">Cost: 50</div>
+                <div class="col mb-3" id="multiplierCost"></div>
             </div>
             <div class="row">
                 <div class="col"></div>
@@ -57,23 +57,23 @@
             <div class="row">
                 <div id="upgrades" class="col-6">
                     <h2>Upgrades Dagangan</h2>
-                    <div class="menu">
-                        <button type="button" id="jualTahu">Jual Tahu Isi</button>
-                        <p id="tahuPrice">10000</p>
+                    <div class="menu1">
+                        <!-- <button type="button" id="jualTahu">Jual Tahu Isi</button>
+                        <p id="tahuPrice">10000</p> -->
                     </div>
-                    <div class="menu">
-                        <button type="button" id="jualRisol">Jual Risol</button>
-                        <p id="risolPrice">20000</p>
+                    <div class="menu2">
+                        <!-- <button type="button" id="jualRisol">Jual Risol</button>
+                        <p id="risolPrice">20000</p> -->
                     </div>
-                    <div class="menu">
-                        <button type="button" id="jualCakwe">Jual Cakwe</button>
-                        <p id="cakwePrice">30000</p>
+                    <div class="menu3">
+                        <!-- <button type="button" id="jualCakwe">Jual Cakwe</button>
+                        <p id="cakwePrice">30000</p> -->
                     </div>
                 </div>
                 <div class="col-6">
                     <h2>Click Tahu</h2>
                     <div id="tahuBulat">
-                        <img src="tahubulat_akuaku.GIF">
+                        <img src="images/tahubulat_akuaku.GIF">
                     </div>
                 </div>
             </div>
@@ -86,10 +86,132 @@
                 var money = 0;
                 var branches = 1;
                 var clickers = 0;
+                var multiplierCost = 50000;
+                var moneyValue = 1000;
 
-                function 
+                function update() {
+                    console.log("branches = " + branches);
+
+                    document.getElementById('branches').textContent = "Buka Cabang Tahu Bulat: " + branches;
+                    document.getElementById('multiplierCost').textContent = "Cost: " + multiplierCost;
+
+                    if(branches === 1){
+                        var button1 = $('<button/>', {
+                            id: 'jualTahu',
+                            text: 'Jual Tahu Isi'
+                        });
+
+                        var p1 = $('<p/>', {
+                            id: "tahuPrice",
+                            text: '10000'
+                        });
+
+                        $('.menu1').append(button1, p1);
+                    } else if(branches === 2){
+                        var button2 = $('<button/>', {
+                            id: 'jualRisol',
+                            text: 'Jual Risol'
+                        });
+
+                        var p2 = $('<p/>', {
+                            id: "risolPrice",
+                            text: '20000'
+                        });
+
+                        $('.menu2').append(button2, p2);
+                    } else if(branches === 3){
+                        var button3 = $('<button/>', {
+                            id: 'jualCakwe',
+                            text: 'Jual Cakwe'
+                        });
+
+                        var p3 = $('<p/>', {
+                            id: "cakwePrice",
+                            text: '30000'
+                        });
+
+                        $('.menu3').append(button3, p3);
+                    }
+
+                    $('#jualTahu').click(function() {
+                        var currentPrice1 = parseInt($('#tahuPrice').text());
+                        if (money >= currentPrice1) {
+                            money -= currentPrice1;
+                            var newPrice1 = currentPrice1 + 5000;
+                            $('#tahuPrice').text(newPrice1);
+                            updateMoney();
+                            alert("Upgrade tahu isi berhasil!");
+                        } else {
+                            alert("Uangmu tidak cukup untuk mengupgrade tahu isi!");
+                        }
+                    });
+
+                    $('#jualRisol').click(function() {
+                        var currentPrice2 = parseInt($('#risolPrice').text());
+                        if (money >= currentPrice2) {
+                            money -= currentPrice2;
+                            var newPrice2 = currentPrice2 + 5000;
+                            $('#risolPrice').text(newPrice2);
+                            updateMoney();
+                            alert("Upgrade risol berhasil!");
+                        } else {
+                            alert("Uangmu tidak cukup untuk mengupgrade risol!");
+                        }
+                    });
+
+                    $('#jualCakwe').click(function() {
+                        var currentPrice3 = parseInt($('#cakwePrice').text());
+                        if (money >= currentPrice3) {
+                            money -= currentPrice3;
+                            var newPrice3 = currentPrice3 + 5000;
+                            $('#cakwePrice').text(newPrice3);
+                            updateMoney();
+                            alert("Upgrade cakwe berhasil!");
+                        } else {
+                            alert("Uangmu tidak cukup untuk mengupgrade cakwe!");
+                        }
+                    });
+                }
+
+                $('#mutliplierButton').click(function(){
+                    if(money >= multiplierCost) {
+                        money -= multiplierCost;
+                        var newMultiplierCost = multiplierCost += 50000;   
+                        branches++;
+                        multiplierCost += 50000;
+                        update();
+                        updateMoney();
+                    }
+                });
+
+                function updateMoney() {
+                    console.log("money = " + money);
+                    console.log("money value = " + moneyValue);
+                    document.getElementById('money').textContent = "Money: " + money;
+
+                    $('#jualTahu').click(function(){
+                        moneyValue = 1500;
+                    });
+
+                    $('#jualRisol').click(function(){
+                        moneyValue = 1700;
+                    });
+                    
+                    $('#jualCakwe').click(function(){
+                        moneyValue = 1850;
+                    });
+                }
+
+
+                $('#tahuBulat').click(function(){
+                        money += moneyValue;
+                        updateMoney();
+                });
+
+                update();
 
             });
+
         </script>
     </body>
 </html>
