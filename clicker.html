@@ -35,7 +35,7 @@
 
             <div class="row">
                 <!--to be updated-->
-                <div class="col mt-1 mb-3">Money : <span id="money">0</span></div> 
+                <div class="col mt-1 mb-3" id="money">Money : </div> 
                 <div class="col mt-1 mb-3" id="clickers">Auto-clickers: 0</div>
                 <div class="col mt-1 mb-3" id="branches"></div>
             </div>
@@ -75,15 +75,6 @@
                     <div id="tahuBulat">
                         <img src="images/tahubulat_akuaku.GIF">
                     </div>
-	
-                    <script>
-                        var money = 0;
-                        
-                        function incrementMoney() {
-                            money++;
-                            document.getElementById("money").innerHTML = money;
-                        }
-                    </script>
                 </div>
             </div>
 
@@ -182,7 +173,7 @@
                     });
                 }
 
-                $('#mutliplierButton').click(function(){
+                $('#multiplierButton').click(function(){
                     if(money >= multiplierCost) {
                         money -= multiplierCost;
                         var newMultiplierCost = multiplierCost += 50000;   
@@ -190,6 +181,8 @@
                         multiplierCost += 50000;
                         update();
                         updateMoney();
+                    } else {
+                        alert("Uangmu tidak cukup untuk membeli multiplier!");
                     }
                 });
 
@@ -199,22 +192,21 @@
                     document.getElementById('money').textContent = "Money: " + money;
 
                     $('#jualTahu').click(function(){
-                        moneyValue = 1500;
+                        moneyValue += 50;
                     });
 
                     $('#jualRisol').click(function(){
-                        moneyValue = 1700;
+                        moneyValue += 70;
                     });
-                    
+
                     $('#jualCakwe').click(function(){
-                        moneyValue = 1850;
+                        moneyValue += 80;
                     });
                 }
 
-
                 $('#tahuBulat').click(function(){
-                        money += moneyValue;
-                        updateMoney();
+                    money += moneyValue;
+                    updateMoney();
                 });
 
                 update();
