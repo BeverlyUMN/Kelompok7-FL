@@ -21,10 +21,10 @@
                     <div class="collapse navbar-collapse" id="navBar">
                         <ul class="navbar-nav">
                             <li class="nav-item active">
-                                <a class="nav-link active" aria-current="page" href="#">Main Game</a>
+                                <a class="nav-link active" aria-current="page" href="clicker.html">Main Game</a>
                             </li>
                             <li class="nav-item active">
-                                <a class="nav-link" href="#">About Us</a>
+                                <a class="nav-link" href="aboutUs.html">About Us</a>
                             </li>
                         </ul>
                     </div>
@@ -35,7 +35,7 @@
 
             <div class="row">
                 <!--to be updated-->
-                <div class="col mt-1 mb-3" id="money">Money: 0</div> 
+                <div class="col mt-1 mb-3">Money : <span id="money">0</span></div> 
                 <div class="col mt-1 mb-3" id="clickers">Auto-clickers: 0</div>
                 <div class="col mt-1 mb-3" id="branches"></div>
             </div>
@@ -75,6 +75,15 @@
                     <div id="tahuBulat">
                         <img src="images/tahubulat_akuaku.GIF">
                     </div>
+	
+                    <script>
+                        var money = 0;
+                        
+                        function incrementMoney() {
+                            money++;
+                            document.getElementById("money").innerHTML = money;
+                        }
+                    </script>
                 </div>
             </div>
 
@@ -211,7 +220,6 @@
                 update();
 
             });
-
         </script>
     </body>
 </html>
