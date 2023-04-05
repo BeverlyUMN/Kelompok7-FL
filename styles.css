@@ -1,0 +1,17 @@
+#upgrades .menu{
+    display: flex;
+}
+
+#tahuPrice{
+    margin-left: 5px;
+}
+#risolPrice{
+    margin-left: 5px;
+}
+#cakwePrice{
+    margin-left: 5px;
+}
+
+#upgrades button{
+    margin-bottom: 10px;
+}
