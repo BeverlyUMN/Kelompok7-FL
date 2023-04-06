@@ -24,3 +24,15 @@
 #tahuBulat {
 	cursor: pointer;
 }
+
+#gambar {
+	display: none;
+	margin-left: 230px;
+	margin-top: 18px;
+	position: fixed;
+}
+
+#gambar img {
+	width: 150px;
+	height: auto;
+}

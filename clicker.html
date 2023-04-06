@@ -14,7 +14,7 @@
                 <div class="container-fluid">
                     <div class="navbar-header">
                         <a class="navbar-brand mb-0 h5" href="#">
-                            <img src="images/tahu bulat.GIF" class="d-inline-block align-top" width="35" height="47">
+                            <img src="images/tahubulat.GIF" class="d-inline-block align-top" width="35" height="47">
                             Tahu Bulat Clicker
                         </a>
                     </div>
@@ -69,10 +69,13 @@
                         <p id="cakwePrice">30000</p> -->
                     </div>
                 </div>
-                <div class="col-6">
+                <div class="col-6" id="tombol">
                     <h2>Click Tahu</h2>
+                    <div id="gambar">
+                        <img src="images/popUp.png">
+                    </div>
                     <div id="tahuBulat">
-                        <img src="images/tahubulat_akuaku.GIF">
+                        <img src="images/tahubulat.GIF">
                     </div>
                 </div>
             </div>
@@ -82,6 +85,39 @@
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script>
             $(document).ready(function(){
+                var delay = 5000; // waktu delay untuk gambar muncul (10 detik)
+                var timeout = 5000; // waktu delay untuk gambar hilang (5 detik)
+
+                var timer = setTimeout(function() {
+                    $('#gambar').fadeIn('fast');
+                    var timer2 = setTimeout(function() {
+                        $('#gambar').fadeOut('fast');
+                    }, timeout);
+                }, delay);
+
+                $('#tombol').click(function() {
+                    clearTimeout(timer);
+                    $('#gambar').fadeOut('fast');
+                });
+
+                // Fungsi untuk mereset timer
+                function resetTimer() {
+                    clearTimeout(timer);
+                    timer = setTimeout(function() {
+                        popup();
+                    }, 5000); // 5 detik
+                }
+
+                // Ketika tombol ditekan
+                $("#tahuBulat").on("mousedown", function() {
+                    resetTimer();
+                });
+
+                // Ketika tombol dilepas
+                $("#tahuBulat").on("mouseup", function() {
+                    resetTimer();
+                });
+
                 var money = 0;
                 var branches = 1;
                 var clickers = 0;
@@ -214,6 +250,7 @@
                 $('#tahuBulat').click(function(){
                     money += moneyValue;
                     updateMoney();
+                    $(this).find('img').attr('src', 'images/tahubulat_akuaku.GIF');
                 });
 
                 document.getElementById('clickers').textContent = "Auto-clickers: " + clickers;
