@@ -2,17 +2,17 @@ KELOMPOK7-FL
 # PTI_UTS_LAB
 DATA ANGGOTA KELOMPOK 
 
-1. Beverly Vladislav Tan
-Job desc: mengerjakan back-end clicker.html, function upgrades dagangan (jual tahu, risol, dan cakwe), multiplier,money, & animasi autoclicker, dan mengedit aboutUS.html.
+1. Beverly Vladislav Tan (00000074964)
+- Job desc: mengerjakan back-end clicker.html, function upgrades dagangan (jual tahu, risol, dan cakwe), multiplier,money, & animasi autoclicker, dan mengedit aboutUS.html.
 
-2. Saint Christopher Syhandon 
-Job desc: styling aboutUs.html, perbaikan function autoclicker, dan penambahan button show identity di aboutUs.html.
+2. Saint Christopher Syhandon (00000075026)
+- Job desc: styling aboutUs.html, perbaikan function autoclicker, dan penambahan button show identity di aboutUs.html.
 
-3. Nayla Mutiara Salsabila Bastari 
-Job desc: membuat base page aboutUs.html + styling aboutUs.html, dan membuat README.
+3. Nayla Mutiara Salsabila Bastari (00000075205)
+- Job desc: membuat base page aboutUs.html + styling aboutUs.html, dan membuat README.
 
-4. Priscillia Desya 
-Job desc: mengerjakan front-end dan styling clicker.html, function autoclicker, perbaikan function (mutliplier dan upgrades dagangan), mengedit aboutUs. html + README.
+4. Priscillia Desya (00000075267)
+- Job desc: mengerjakan front-end dan styling clicker.html, function autoclicker, perbaikan function (mutliplier dan upgrades dagangan), mengedit aboutUs. html + README.
 
 
 PENJELASAN ATURAN PERMAINAN
