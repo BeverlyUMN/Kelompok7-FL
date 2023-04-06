@@ -233,58 +233,78 @@
                     console.log("money = " + money);
                     console.log("money value = " + moneyValue);
                     document.getElementById('money').textContent = "Money: " + money;
-
-                    // $('#jualTahu').click(function(){
-                    //     moneyValue += 50;
-                    // });
-
-                    // $('#jualRisol').click(function(){
-                    //     moneyValue += 70;
-                    // });
-
-                    // $('#jualCakwe').click(function(){
-                    //     moneyValue += 80;
-                    // });
                 }
 
-                $('#tahuBulat').click(function(){
+                $('#tahuBulat').click(function() {
                     money += moneyValue;
                     updateMoney();
-                    $(this).find('img').attr('src', 'images/tahubulat_akuaku.GIF');
+                    $(this).find('img').attr('src', 'images/tahubulat_akuaku.gif');
                 });
 
-                document.getElementById('clickers').textContent = "Auto-clickers: " + clickers;
-                document.getElementById('clickerCost').textContent = "Cost: " + clickerCost;
+                // Kode untuk mengembalikan gambar asli Tahu Bulat
+                $('#tahuBulat').mouseleave(function() {
+                    $(this).find('img').attr('src', 'images/tahubulat.GIF');
+                });
 
                 $('#clickerButton').click(function(){
                     if(money >=clickerCost){
                         money -= clickerCost;
                         clickers++;
                         clickerCost += 10000;
-                        updateClickers();
+                        updateCost();
                         updateMoney();
+                        alert("Berhasil membeli auto-clicker!");
                     }
                     else{
                         alert("Uangmu tidak cukup untuk membeli auto-clicker!");
                     }
-                })
+                });
 
-                function updateClickers(){
+
+                function updateCost() {
+                    console.log("cost = " + clickerCost);
+                    
                     document.getElementById('clickers').textContent = "Auto-clickers: " + clickers;
-                    document.getElementById('clickerCost').textContent = "Cost: " + clickerCost;
-                    if (clickers > 0){
-                        $('#tahuBulat').click(function(){
-                            var clickValue;
-                            clickValue = 500*clickers;
-                            money += clickValue;
-                            updateMoney();
-                        })
-                    };
+                    document.getElementById('clickerCost').textContent = "Cost: " + clickerCost;               
                 }
 
+                updateCost();
                 update();
             
             });
+
+            var button1 = document.getElementById("clickerButton");
+            var button2 = document.getElementById("tahuBulat");
+
+            // Function to simulate a click on the buttons
+            function clickButtons() {
+                button1.click();
+            }
+
+            // Function to start auto-clicking the second button after the first button is clicked
+            let button2Interval;
+            let counter = 0;
+            let intervalTime = 5000;
+
+            function startAutoClick() {
+                button2Interval = setInterval(clickButton2, intervalTime);
+            }
+
+            function clickButton2() {
+                //fungsi yang dipanggil setiap kali tombol diklik untuk mengurangi intervalTime
+                counter++;
+                intervalTime = 5000 - (counter * 500); //mengurangi nilai intervalTime sebanyak 500 setiap kali tombol diklik
+                clearInterval(button2Interval); //menghentikan interval saat ini
+                button2Interval = setInterval(clickButton2, intervalTime); //membuat interval baru dengan intervalTime yang sudah diubah
+            }
+            // Function to simulate a click on the second button
+            function clickButton2() {
+                button2.click();
+            }
+
+            // Add event listener to the first button to start auto-clicking the second button after it's clicked
+            button1.addEventListener("click", startAutoClick);
+
         </script>
     </body>
 </html>
